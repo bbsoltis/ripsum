@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="author" content="Brian B. Soltis">
+  <meta name="description" content="I created this as a practice project. It is an alternative to the traditional lorem ipsum filler text and was clearly inspired by https://hipsum.co. It is also intended to be an homage to one of the great classic horror films. I make no money from this site nor do I intend to, please don't sue me.">
+
+  <title>Welcome to the Overlook</title>
+
+  <link rel="stylesheet" href="normalize.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <!-- Main container contains grid template -->
+  <div class="main-container">
+
+    <!-- Header background image -->
+    <img class="header-image" src="media/wendy_discovery.jpg">
+
+    <!-- Header blockquote -->
+    <h2 class="header-quote"> – "What'll it be Mr. Torrance?" – </h2>
+
+    <!-- Controls container -->
+    <div class="btn-container">
+      <!-- # of paragraphs input field -->
+      <input type="number" autocomplete="off" name="quanity" min="1" max="99" placeholder="Number of Paragraphs" maxlength="2">
+      <!-- Submit button -->
+      <button class="btn">Submit</button>
+    </div>
+
+    <!-- Output container -->
+    <div class="output"></div>
+
+    <!-- Begin footer -->
+    <div class="footer-container">
+
+      <!-- Copyright info -->
+      <div class="footer footer-left">&copy;
+        <!-- JavaScript will auto-update copyright year -->
+        <span class="cr_year"></span>
+        Brian B. Soltis
+      </div>
+
+      <!-- Misc info -->
+      <div class="footer footer-center">This page is just for fun and I make no money from it, please don't sue me.</div>
+      
+      <!-- Contact info -->
+      <div class="footer footer-right"> <a href="https://github.com/bbsoltis">GitHub</a> </div>
+    
+      <!-- End footer -->
+    </div>
+
+  </div>
+  <script type="text/JavaScript" src="scripts.js"></script>
+</body>
+
+</html>

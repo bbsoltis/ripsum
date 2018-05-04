@@ -1,0 +1,263 @@
+/* ==================================================
+*  Table of Contents
+*
+*  1.0 Global Settings
+*  2.0 Custom Properties
+*  3.0 Main Container
+*  4.0 Header Image
+*  5.0 Controls
+*   5.1 Input Field
+*   5.2 Buttons
+*  6.0 Output 
+*  7.0 Footer 
+*  8.0 Responsive 
+*  ================================================== */
+
+/* ========================================
+*  1.0 Global Settings
+*  ======================================== */
+@import url('https://fonts.googleapis.com/css?family=Petit+Formal+Script');
+
+* {
+  box-sizing: border-box;
+}
+
+/* ========================================
+*  2.0 Custom Properties
+*  ======================================== */
+:root {
+  /* Colors */
+  --footer-bg-color: #1D1D1D;
+  --btn-bg-color: #DABE2E;
+  --main-font-color: rgba(0,0,0,0.7);
+  --placeholder-font-color: rgba(0,0,0,0.4);
+  --footer-font-color: rgba(255,255,255,0.9);
+  
+  /* Typeface */
+  --page-font: sans-serif;
+  --blockquote-font: 'Petit Formal Script', cursive;
+  --output-font: monospace;
+  
+  /* Font sizes */
+  --output-font-size: .9rem;
+  --btn-font-size: 1rem;
+  --input-font-size: 1rem;
+  --footer-font-size: .9rem;
+}
+
+
+/* ========================================
+*  3.0 Main Container
+*  ======================================== */
+.main-container {
+  /* Grid Properties */
+  display: grid;
+  grid-gap: 20px;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(auto-fit, 1fr);
+  align-items: center;
+  justify-items: center;
+}
+
+/* ========================================
+*  4.0 Header Image
+*  ======================================== */
+.header-image {
+  /* Grid Properties */
+  grid-column: 1 / -1;
+  /* Sizing & Position*/
+  height: 85vh;
+  width: 100%;
+  /* Appearance */
+  object-fit: cover;
+}
+
+/* Header Quote */
+.header-quote {
+  /* Grid Properties */
+  grid-column: 1 / -1;
+  /* Appearance */
+  margin: 15px;
+  /* Font Styling */
+  font-style: italic;
+  font-weight: 200;
+  font-size: 1.8rem;
+  font-family: var(--blockquote-font);
+  color: var(--main-font-color);
+}
+
+/* ========================================
+*  5.0 Controls
+*  ======================================== */
+
+/* ------------------------------ 
+*  5.1 Input Field
+*  ------------------------------ */
+input[type=number] {
+  /* Grid Properties */
+  grid-column: 2 / 3;
+  /* Sizing & Position*/
+  height: 50px;
+  width: 220px;
+  
+  /* Appearance */
+  padding: 8px;
+  border: 1px solid rgba(0,0,0,0.1);
+  outline: none;
+  text-align: center;
+  -moz-appearance: textfield;
+  
+  /* Font Styling */
+  font-family: var(--page-font);
+  font-size: 1.2rem;
+  color: var(--main-font-color);
+}
+
+/* Hides spinner in input field */
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+::placeholder {
+  color: var(--placeholder-font-color);
+}
+
+/* ------------------------------ 
+*  5.2 Buttons
+*  ------------------------------ */
+.btn-container {
+  /* Sub-grid */
+  grid-column: 1 / -1;
+  display: grid;
+  grid-gap: 4vw;
+  grid-template-columns: repeat(4, 1fr);
+  justify-items: center;
+}
+
+.btn {
+  /* Grid Properties */
+  grid-column: 3 / 4;
+  /* Sizing & position*/
+  width: 140px;
+  Height: 50px;
+  /* padding: 15px; */
+  
+  /* Appearance */
+  border: none;
+  outline: none;
+  box-shadow: 0 0 5px rgba(0,0,0,0.2);
+  background: linear-gradient(0deg, var(--btn-bg-color),  #e5d16c 50%, var(--btn-bg-color));
+  
+  /* Font Styling */
+  font-family: var(--page-font);
+  font-size: var(--btn-font-size);
+  color: var(--main-font-color);
+}
+
+/* Interaction Styling */
+.btn:active {
+  box-shadow: none;
+  background: linear-gradient(0deg, #c4ab29, #e1cb57 50%, #c4ab29);
+}
+
+/* ========================================
+*  6.0 Output
+*  ======================================== */
+.output {
+  /* Grid Properties */
+  grid-column: 1 / -1;
+  /* Sizing & Position*/
+  width: 60vw;
+  
+  /* Appearance */
+  background: #f1f1d4;
+  padding: 30px;
+  
+  /* Font Styling */
+  font-family: var(--output-font);
+  color: var(--main-font-color);
+  font-size: var(--output-font-size);
+}
+
+/* Clears the styling when there is no text */
+.output:empty {
+  display:none;
+}
+
+/* ========================================
+*  7.0 Footer
+*  ======================================== */
+.footer-container {
+  /* Grid Properties */
+  grid-column: 1 / -1;
+  /* Sizing & Position*/
+  width: 100%;
+  /* Appearance */
+  background-color: var(--footer-bg-color);
+  /* Sub-grid */
+  display: grid;
+  justify-items: center;
+  align-items: center;
+  grid-gap: 20px;
+}
+
+.footer {
+  /* Appearance */
+  padding: 20px;
+  /* Font Styling */
+  font-weight: 200;
+  font-family: var(--page-font);
+  font-size: var(--footer-font-size);
+  color: var(--footer-font-color);
+}
+
+.footer a {
+  text-decoration: none;
+  color: var(--footer-font-color);
+}
+
+.footer a:hover {
+  text-decoration: underline;
+  color: rgba(255,255,255,.6);
+}
+
+/* Proper Footer Item Alignment */
+.footer-left {
+  grid-column: 1 / span 1;
+}
+.footer-center {
+  grid-column: 2 / span 1;
+}
+.footer-right {
+  grid-column: 3 / span 1;
+}
+
+/* ========================================
+*  8.0 Responsive
+*  ======================================== */
+@media (max-width: 500px) {
+  .btn {
+    grid-column: 1 / -1;
+  }
+  
+  input[type="number"] {
+    grid-column: 1 / -1;
+  }
+
+  .header-quote {
+    font-size: 1.2rem;
+  }
+
+  .footer {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (min-width: 1000px) {
+  
+  .output {
+    max-width: 700px;
+  }
+}
