@@ -6,27 +6,32 @@
  * 
  *  ================================================== */
 
-window.onload = function () {
+window.onload = () => {
+
+  // Handles what happens when the user clicks a button
+  const handleClick = (e) => {
+    // Gets the value typed into the text field
+    const inputValue = parseInt(document.getElementsByTagName("input")[0].value);
+    // Gets class of clicked button
+    button = e.currentTarget.classList.item(1);
+    // Looks for an entry in the text field
+    isNaN(inputValue) ? alert("Please enter a number into the text field") : jacksNovel(button)
+  };
+  
   button = document.querySelectorAll(".btn");
   button.forEach(button => button.addEventListener('click', handleClick));
 
-  (function() {
-    document.querySelector(".cr_year").innerHTML = new Date().getFullYear();
-    
-  })();
+  // Updates copyright date
+  (() => { document.querySelector(".cr_year").innerHTML = new Date().getFullYear(); })();
 
   // Generate a random number for the number of sentences in each paragraph.
-  function numberOfSentences(min, max) {
-    return Math.floor(Math.random() * (max - min) + min);
-  }
+  const numberOfSentences = (min, max) => Math.floor(Math.random() * (max - min) + min);
   
   // Generate  number to randomize the sentences in each pargraph.
-  function randomData(max) {
-    return Math.floor(Math.random() * (max - 1) + 1);
-  }
+  const randomData = (max) => Math.floor(Math.random() * (max - 1) + 1);
 
   // Generates and inserts Jack's Novel output text into DOM
-  function jacksNovel() {
+  const jacksNovel = () => {
     const num = document.getElementsByTagName("input")[0].value,
           outputElement = document.querySelector(".output"),
           // 1.0 Number of entries in jacksNovel (data.json["jacksNovel"])
@@ -38,9 +43,9 @@ window.onload = function () {
       .then(function (response) {
         return response.json();
       })
-      .then(function (myData) {
+      .then((myData) => {
         // Recursively builds each paragraph with random selections from data
-        function buildParagraph(num) {
+        const buildParagraph = (num) => {
           if (num > 0) {
             array.push(myData["jacksNovel"][randomData(22)]);
             return (buildParagraph(num - 1));
@@ -49,7 +54,7 @@ window.onload = function () {
           }
         }
         // Recursively generates complete output from generated paragraphs
-        function jacksOutput(num) {
+        const jacksOutput = (num) => {
           if (num > 0) {
             // 2.0 Number of sentences in each paragraph (min, max)
             buildParagraph(numberOfSentences(6, 10));
@@ -60,15 +65,5 @@ window.onload = function () {
         jacksOutput(num);
         outputElement.innerHTML = array.join("");
       });
-    }
-
-    // Handles what happens when the user clicks a button
-    function handleClick(e) {
-      // Gets the value typed into the text field
-      const inputValue = parseInt(document.getElementsByTagName("input")[0].value);
-      // Gets class of clicked button
-      button = e.currentTarget.classList.item(1);
-      // Looks for an entry in the text field
-      isNaN(inputValue) ? alert("Please enter a number into the text field") : jacksNovel(button)
     }
 }
